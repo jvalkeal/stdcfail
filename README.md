@@ -21,3 +21,7 @@ Error: Image build request failed with exit status 1
 FAILURE: Build failed with an exception.
 
 ```
+
+Workflow looks like:
+
+![image](https://user-images.githubusercontent.com/50398/218137566-5639a22e-7443-4299-98c8-8ed1cec1e97f.png)
