@@ -4,7 +4,7 @@ Simple native compile as a sample for https://github.com/oracle/graal/issues/590
 
 This is a plain boot gradle build to get easy build to demonstrate failure on windows if `-H:+AllowJRTFileSystem` is enabled via `META-INF/native-image/native-image.properties`.
 
-There is one workflow `native.yml` which builds on linux/macos/windows. Windows build fails with error:
+There are two workflows `native.yml` and `native2.yml` which builds on linux/macos/windows. Only difference between those workflows is that latter uses _graalvm_ as `JAVA_HOME`. Windows build fails with error:
 
 ```
 LINK : fatal error LNK1181: cannot open input file 'stdc++.lib'
