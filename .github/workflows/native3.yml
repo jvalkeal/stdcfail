@@ -1,0 +1,30 @@
+name: Native Build3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - nickname: macos
+            os: macos-latest
+          - nickname: linux
+            os: ubuntu-latest
+          - nickname: windows
+            os: windows-latest
+    name: Build ${{ matrix.nickname }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          distribution: graalvm
+          java-version: 17
+          components: native-image
+          set-java-home: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          ./gradlew clean build nativeBuild
