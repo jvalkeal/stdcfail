@@ -10,19 +10,25 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - nickname: macos
+          - nickname: macos-jdk17
             os: macos-latest
-          - nickname: linux
+            java: 17
+          - nickname: linux-jdk17
             os: ubuntu-latest
-          - nickname: windows
+            java: 17
+          - nickname: windows-jdk17
             os: windows-latest
+            java: 17
+          - nickname: windows-jdk21
+            os: windows-latest
+            java: 21
     name: Build ${{ matrix.nickname }}
     steps:
       - uses: actions/checkout@v2
       - uses: graalvm/setup-graalvm@v1
         with:
           distribution: graalvm
-          java-version: 17
+          java-version: ${{ matrix.java }}
           components: native-image
           set-java-home: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
