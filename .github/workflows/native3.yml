@@ -19,18 +19,25 @@ jobs:
           - nickname: windows-jdk17
             os: windows-latest
             java: 17
+            distribution: graalvm
           - nickname: windows-jdk21
             os: windows-latest
             java: 21
+            distribution: graalvm
+          - nickname: windows-jdk21-ce
+            os: windows-latest
+            java: 21
+            distribution: graalvm-community
           - nickname: windows-dev
             os: windows-latest
             java: dev
+            distribution: graalvm-community
     name: Build ${{ matrix.nickname }}
     steps:
       - uses: actions/checkout@v2
       - uses: graalvm/setup-graalvm@v1
         with:
-          distribution: graalvm
+          distribution: ${{ matrix.distribution }}
           java-version: ${{ matrix.java }}
           components: native-image
           set-java-home: true
