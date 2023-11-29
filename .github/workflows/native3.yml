@@ -22,6 +22,9 @@ jobs:
           - nickname: windows-jdk21
             os: windows-latest
             java: 21
+          - nickname: windows-dev
+            os: windows-latest
+            java: dev
     name: Build ${{ matrix.nickname }}
     steps:
       - uses: actions/checkout@v2
